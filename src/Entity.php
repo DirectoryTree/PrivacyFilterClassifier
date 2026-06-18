@@ -33,7 +33,7 @@ readonly class Entity implements JsonSerializable
         $score = (float) ($entity['score'] ?? 0);
         $type = (string) ($entity['entity_group'] ?? $entity['type'] ?? $entity['label'] ?? '');
 
-        if ($type === '' || $start < 0 || $end < $start || $end > strlen($sourceText)) {
+        if (empty($type) || $start < 0 || $end < $start || $end > strlen($sourceText)) {
             throw UnexpectedOutputException::fromOutput(json_encode($entity, JSON_THROW_ON_ERROR));
         }
 
