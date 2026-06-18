@@ -5,11 +5,20 @@ on:
     branches:
       - master
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   tests:
     name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     strategy:
       fail-fast: false
@@ -21,13 +30,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          tools: composer:v2
           coverage: none
+
+      - name: Validate Composer
+        run: composer validate --strict
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
