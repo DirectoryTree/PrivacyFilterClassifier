@@ -10,7 +10,7 @@ use Symfony\Component\Process\Process;
 /**
  * Runtime API for classifying text with the local privacy-filter binary.
  */
-class Classifier
+class Classifier implements ClassifierInterface
 {
     /**
      * The default classification threshold.
