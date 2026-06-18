@@ -6,11 +6,11 @@ use DirectoryTree\PrivacyFilterClassifier\Exceptions\BinaryNotFoundException;
 use DirectoryTree\PrivacyFilterClassifier\Exceptions\ModelNotFoundException;
 
 it('returns entity instances from the privacy filter output', function () {
-    $entities = new Classifier(
+    $entities = (new Classifier(
         binaryPath: $this->binaryPath,
         modelPath: $this->modelPath,
         timeout: 5,
-    )->entities('Contact John Doe at jdoe@example.com from 555-0100.');
+    ))->entities('Contact John Doe at jdoe@example.com from 555-0100.');
 
     expect($entities)->toHaveCount(1)
         ->and($entities[0])->toBeInstanceOf(Entity::class)
@@ -29,11 +29,11 @@ it('uses byte offsets to hydrate text when the cli text field is not valid json'
         'PRIVACY_FILTER_FAKE_TYPE' => 'person',
     ]);
 
-    $entities = new Classifier(
+    $entities = (new Classifier(
         binaryPath: $this->binaryPath,
         modelPath: $this->modelPath,
         timeout: 5,
-    )->entities('Contact John "JD" Doe today.');
+    ))->entities('Contact John "JD" Doe today.');
 
     expect($entities)->toHaveCount(1)
         ->and($entities[0]->type)->toBe('person')
@@ -41,17 +41,17 @@ it('uses byte offsets to hydrate text when the cli text field is not valid json'
 });
 
 it('throws an exception when the binary does not exist', function () {
-    new Classifier(
+    (new Classifier(
         binaryPath: __DIR__.'/missing-privacy-filter',
         modelPath: $this->modelPath,
         timeout: 5,
-    )->entities('Contact John Doe at jdoe@example.com.');
+    ))->entities('Contact John Doe at jdoe@example.com.');
 })->throws(BinaryNotFoundException::class);
 
 it('throws an exception when the model does not exist', function () {
-    new Classifier(
+    (new Classifier(
         binaryPath: $this->binaryPath,
         modelPath: __DIR__.'/missing-model.gguf',
         timeout: 5,
-    )->entities('Contact John Doe at jdoe@example.com.');
+    ))->entities('Contact John Doe at jdoe@example.com.');
 })->throws(ModelNotFoundException::class);
