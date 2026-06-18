@@ -1,5 +1,8 @@
 <div align="center">
 <h1>Privacy Filter Classifier</h1>
+<p>
+<a href="https://github.com/DirectoryTree/PrivacyFilterClassifier/actions/workflows/run-tests.yml"><img src="https://github.com/DirectoryTree/PrivacyFilterClassifier/actions/workflows/run-tests.yml/badge.svg?branch=master" alt="Tests status"></a>
+</p>
 <p>Framework agnostic PHP classifier for <code>privacy-filter.cpp</code> binaries.</p>
 </div>
 
