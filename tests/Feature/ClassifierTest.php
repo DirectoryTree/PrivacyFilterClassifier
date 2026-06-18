@@ -14,7 +14,7 @@ it('returns entity instances from the privacy filter output', function () {
 
     expect($entities)->toHaveCount(1)
         ->and($entities[0])->toBeInstanceOf(Entity::class)
-        ->and($entities[0]->type)->toBe('email')
+        ->and($entities[0]->type)->toBe('private_email')
         ->and($entities[0]->text)->toBe('jdoe@example.com')
         ->and($entities[0]->start)->toBe(20)
         ->and($entities[0]->end)->toBe(36)
@@ -26,7 +26,7 @@ it('uses byte offsets to hydrate text when the cli text field is not valid json'
     $this->setFakePrivacyFilterEnvironment([
         'PRIVACY_FILTER_FAKE_MODE' => 'raw-text',
         'PRIVACY_FILTER_FAKE_NEEDLE' => 'John "JD" Doe',
-        'PRIVACY_FILTER_FAKE_TYPE' => 'person',
+        'PRIVACY_FILTER_FAKE_TYPE' => 'private_person',
     ]);
 
     $entities = (new Classifier(
@@ -36,7 +36,7 @@ it('uses byte offsets to hydrate text when the cli text field is not valid json'
     ))->entities('Contact John "JD" Doe today.');
 
     expect($entities)->toHaveCount(1)
-        ->and($entities[0]->type)->toBe('person')
+        ->and($entities[0]->type)->toBe('private_person')
         ->and($entities[0]->text)->toBe('John "JD" Doe');
 });
 

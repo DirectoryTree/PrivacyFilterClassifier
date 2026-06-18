@@ -3,7 +3,7 @@
 
 $text = stream_get_contents(STDIN);
 $needle = getenv('PRIVACY_FILTER_FAKE_NEEDLE') ?: 'jdoe@example.com';
-$type = getenv('PRIVACY_FILTER_FAKE_TYPE') ?: 'email';
+$type = getenv('PRIVACY_FILTER_FAKE_TYPE') ?: 'private_email';
 $mode = getenv('PRIVACY_FILTER_FAKE_MODE') ?: 'json';
 $start = strpos($text, $needle);
 

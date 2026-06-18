@@ -41,14 +41,13 @@ class EntityFactory
     /**
      * Create entities from invalid JSON output prefixes.
      *
-     * The upstream CLI includes raw entity text in the JSON response without
-     * escaping it first. This fallback uses the byte offsets and ignores the
-     * echoed text field so quoted entity text can still be handled safely.
-     *
      * @return array<int, Entity>
      */
     public function fromOutputPrefixes(string $output, string $sourceText): array
     {
+        // The upstream CLI prints entity text directly into a JSON-like response
+        // without escaping it first. Read only the fields before the text value,
+        // then rehydrate entity text from the original byte offsets.
         preg_match_all(
             '/\{\s*"entity_group"\s*:\s*"(?P<type>[^"]+)"\s*,\s*"start"\s*:\s*(?P<start>-?\d+)\s*,\s*"end"\s*:\s*(?P<end>-?\d+)\s*,\s*"score"\s*:\s*(?P<score>-?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s*,\s*"text"\s*:\s*"/',
             $output,

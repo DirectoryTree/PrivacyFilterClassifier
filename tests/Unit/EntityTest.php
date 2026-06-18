@@ -6,14 +6,14 @@ use DirectoryTree\PrivacyFilterClassifier\Exceptions\UnexpectedOutputException;
 
 it('creates an entity from a decoded payload', function () {
     $entity = Entity::from([
-        'entity_group' => 'email',
+        'entity_group' => 'private_email',
         'start' => 20,
         'end' => 36,
         'score' => 0.9876,
         'text' => 'ignored@example.com',
     ], 'Contact John Doe at jdoe@example.com.');
 
-    expect($entity->type)->toBe('email')
+    expect($entity->type)->toBe('private_email')
         ->and($entity->text)->toBe('jdoe@example.com')
         ->and($entity->start)->toBe(20)
         ->and($entity->end)->toBe(36)
@@ -22,19 +22,19 @@ it('creates an entity from a decoded payload', function () {
 
 it('creates an entity from alternate type keys', function () {
     $entity = Entity::from([
-        'label' => 'person',
+        'label' => 'private_person',
         'start' => 8,
         'end' => 16,
         'score' => 0.9876,
     ], 'Contact John Doe today.');
 
-    expect($entity->type)->toBe('person')
+    expect($entity->type)->toBe('private_person')
         ->and($entity->text)->toBe('John Doe');
 });
 
 it('exposes entity details as arrays and json', function () {
     $entity = new Entity(
-        type: 'email',
+        type: 'private_email',
         start: 20,
         end: 36,
         score: 0.9876,
@@ -43,7 +43,7 @@ it('exposes entity details as arrays and json', function () {
 
     expect($entity->length())->toBe(16)
         ->and($entity->toArray())->toBe([
-            'type' => 'email',
+            'type' => 'private_email',
             'start' => 20,
             'end' => 36,
             'score' => 0.9876,
@@ -78,7 +78,7 @@ it('returns null when the entity type is unknown', function () {
 
 it('throws an exception when the decoded payload is invalid', function () {
     Entity::from([
-        'entity_group' => 'email',
+        'entity_group' => 'private_email',
         'start' => 20,
         'end' => 200,
         'score' => 0.9876,
