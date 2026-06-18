@@ -53,11 +53,3 @@ foreach ($entities as $entity) {
     $entity->score; // 0.98
 }
 ```
-
-## Testing
-
-You may run the package test suite using Pest:
-
-```bash
-./vendor/bin/pest
-```
