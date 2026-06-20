@@ -30,7 +30,7 @@ $classifier = new Classifier(
 $entities = $classifier->entities('Contact John Doe at jdoe@example.com.');
 ```
 
-You may provide a classification threshold at runtime. The threshold is the minimum confidence score an entity must meet before it is returned. Increasing the threshold returns fewer, higher-confidence entities, while decreasing it may return more entities with lower confidence:
+You may provide a classification threshold at runtime. Only entities with a confidence score equal to or greater than the threshold will be returned:
 
 ```php
 $entities = $classifier->entities(
