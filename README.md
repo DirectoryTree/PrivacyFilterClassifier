@@ -1,10 +1,23 @@
-<div align="center">
-<h1>Privacy Filter Classifier</h1>
-<p>
-<a href="https://github.com/DirectoryTree/PrivacyFilterClassifier/actions/workflows/run-tests.yml"><img src="https://github.com/DirectoryTree/PrivacyFilterClassifier/actions/workflows/run-tests.yml/badge.svg?branch=master" alt="Tests status"></a>
+<h1 align="center">Privacy Filter Classifier</h1>
+
+<p align="center">Framework agnostic PHP classifier for <a href="https://github.com/DirectoryTree/PrivacyFilterBinaries"><code>privacy-filter.cpp</code></a> binaries.</p>
+
+<p align="center">
+    <a href="https://github.com/DirectoryTree/PrivacyFilterClassifier/actions/workflows/run-tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/DirectoryTree/PrivacyFilterClassifier/run-tests.yml?branch=master&amp;style=flat-square" alt="Tests"></a>
+    <a href="https://packagist.org/packages/directorytree/privacy-filter-classifier"><img src="https://img.shields.io/packagist/dt/directorytree/privacy-filter-classifier.svg?style=flat-square" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/directorytree/privacy-filter-classifier"><img src="https://img.shields.io/packagist/v/directorytree/privacy-filter-classifier.svg?style=flat-square" alt="Latest Version"></a>
+    <a href="https://github.com/DirectoryTree/PrivacyFilterClassifier/blob/master/LICENSE"><img src="https://img.shields.io/github/license/DirectoryTree/PrivacyFilterClassifier?style=flat-square" alt="License"></a>
 </p>
-<p>Framework agnostic PHP classifier for <a href="https://github.com/DirectoryTree/PrivacyFilterBinaries"><code>privacy-filter.cpp</code></a> binaries.</p>
-</div>
+
+<p align="center">
+    <a href="#installation">Installation</a>
+    <span> · </span>
+    <a href="#usage">Usage</a>
+    <span> · </span>
+    <a href="#entities">Entities</a>
+</p>
+
+---
 
 ## Installation
 
